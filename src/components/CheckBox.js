@@ -3,7 +3,7 @@ import React from "react"
 const CheckBox=({action})=>{
     return(
         <>
-            <input type="checkbox" value={action}/>
+            <input type="checkbox" checked={action}/>
         </>
     )
 }
