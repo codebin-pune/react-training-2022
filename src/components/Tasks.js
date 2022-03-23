@@ -1,12 +1,12 @@
 import React from "react"
 import TaskItem from "./TaskItem";
 
-const Tasks=()=>{
+const Tasks=({taskList})=>{
     return(
           <>
-              <TaskItem/>
-              <TaskItem/>
-              <TaskItem/>
+              {taskList.map((item)=> <TaskItem text={item.text} status={item.completed} />)
+              
+              }
           </>
     )
 }
