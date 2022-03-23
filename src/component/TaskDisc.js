@@ -1,8 +1,8 @@
 import React from 'react';
 
-const TaskDisc = ({taskTxt}) => {
+const TaskDisc = ({taskText}) => {
   return (
-    <p>{taskTxt}</p>
+    <p>{taskText}</p>
   )
 }
 

@@ -1,12 +1,10 @@
 import React from 'react';
 import TaskItem from './TaskItem';
 
-const Tasks = () => {
+const Tasks = ({taskList}) => {
   return(
     <div>
-      <TaskItem />
-      <TaskItem />
-      <TaskItem />
+      {taskList.map((task) => <TaskItem completed={task.completed} text={task.text}/>)}
     </div>
   )
 }
