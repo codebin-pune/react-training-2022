@@ -1,8 +1,8 @@
 import React from "react";
 
-const CheckBox = ({status}) => {
+const CheckBox = ({status,onChange }) => {
     return (
-        <input type = "checkbox" checked={status} />
+        <input type = "checkbox" checked={status} onChange={onChange} />
     )
 }
 

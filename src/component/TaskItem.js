@@ -2,12 +2,12 @@ import React from 'react';
 import CheckBox from './CheckBox';
 import TaskDisc from './TaskDisc';
 
-const TaskItem = ({completed,text}) => {
+const TaskItem = ({tasks,removeTask,handleComplete}) => {
   return (
     <div style={{display:"flex",flexDirection:'row'}}>
-      <CheckBox status={completed} />
-      <TaskDisc taskText={text} />
-      <button style={{height:20,marginTop:15}}>X</button>
+      <CheckBox onChange = {() => handleComplete(tasks.id)} status={tasks.completed} />
+      <TaskDisc taskText={tasks.text} />
+      <button onClick={()=>removeTask(tasks.id)} style={{height:20,marginTop:15}}>X</button>
     </div>
   )
 }

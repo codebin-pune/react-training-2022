@@ -1,10 +1,15 @@
 import React from 'react';
 import TaskItem from './TaskItem';
 
-const Tasks = ({taskList}) => {
+const Tasks = ({tasks,removeTask,handleComplete}) => {
   return(
     <div>
-      {taskList.map((task) => <TaskItem completed={task.completed} text={task.text}/>)}
+      {tasks.map((task) => 
+      <TaskItem 
+      handleComplete = {handleComplete}
+      removeTask={removeTask} 
+      tasks={task}
+      />)}
     </div>
   )
 }
