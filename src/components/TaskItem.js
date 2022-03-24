@@ -1,21 +1,19 @@
 import React from "react"
 import CheckBox from "./CheckBox";
 import TaskDesc from "./TaskDesc";
-import TaskList from "./TaskList";
-
- const TaskItem=({text,status})=>{
+import Button from "./Button";
 
 
-  const handller=(e)=>{
-      console.log(e)
-    console.log(e.currentTarget.id);
-      
-  }
+ const TaskItem=({task,removeTask, handleComplete})=>{
+
     return(
         <div style={{display:"flex",flexDirection:"row"}}>
-            <CheckBox action={status}/>
-            <TaskDesc des={text}/>
-            <button  onClick={(e)=>handller(e)} style={{height:20,marginTop:20,marginLeft:10}} >X</button>
+            <CheckBox status={task.completed}  onChange={() => handleComplete(task.id)}/>
+            <TaskDesc textDesc={task.text}/>
+            <div>
+            
+            <Button text="delete" onClick={() => removeTask(task.id)} />
+            </div> 
         </div>
     )
 }

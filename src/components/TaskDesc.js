@@ -1,8 +1,8 @@
 import React from "react"
 
-const taskDesc=({des})=>{
+const taskDesc=({textDesc})=>{
     return(
-            <p>{des}</p>
+            <p>{textDesc}</p>
     )
 }
 

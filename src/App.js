@@ -3,34 +3,19 @@ import Tasks from "./components/Tasks";
 import Header from "./components/Header";
 import { useState } from "react";
 import Button from "./components/Button";
-import TaskList from "./components/TaskList";
 
-// const tasks=[
-//   {
-//     id:1,
-//     text:"gopal",
-//     completed:true
-//   },
-//   {
-//     id:2,
-//     text:"text1",
-//     completed:false
-//   },
-//   {
-//     id:3,
-//     text:"text1",
-//     completed:false
-//   },
-//   {
-//     id:4,
-//     text:"text1",
-//     completed:false
-//   }
-// ]
+
+const tasks=[
+  {
+    id:1,
+    text:"gopal",
+    completed:false
+  }];
 
 function App() {
-  const [taskList, setTaskList] = useState(TaskList);
+  const [taskList, setTaskList] = useState(tasks);
   const [newTaskText, setNewTaskText] = useState("");
+  const [listState,setListState]=useState("all")
 
   const handller = (e) => {
     const data = e.target.value;
@@ -39,27 +24,70 @@ function App() {
 
   const addTask = () => {
     const newData = {
-      id: new Date().toDateString,
+      id: new Date().toString(),
       text: newTaskText,
       completed: false,
     };
 
-    TaskList.push(newData);
+  
     setTaskList([...taskList, newData]);
-    console.log(taskList);
     setNewTaskText("");
   };
 
+
+  const removeTask=(id)=>{
+        const index=taskList.findIndex((item)=>item.id===id);
+        const newList = [...taskList.slice(0,index),...taskList.slice(index+1)];
+        setTaskList(newList);
+      }
+
+     const handleComplete=(id)=>{
+      const index=taskList.findIndex((item)=>item.id===id);
+      let updatedItem=taskList[index];
+      updatedItem.completed=!taskList[index].completed;
+      const newList =[
+        ...taskList.slice(0,index),
+        updatedItem,
+        ...taskList.slice(index+1),
+      ]
+      setTaskList(newList);
+     };
+
+     const handleFilters=(action)=>{
+           setListState(action)
+     }
+
+     const completedTasks=taskList.filter((item)=>item.completed);
+     const pandingTasks=taskList.filter((item)=>!item.completed);
+     let listToShow=taskList;
+
+     switch(listState){
+         case "all":
+           listToShow=taskList;
+           break;
+          case "pending":
+            listToShow=pandingTasks;
+            break;
+          case "complete":
+              listToShow=completedTasks;
+              break;
+          default:
+            break;
+     }
+          
   return (
     <div className="App" style={{marginLeft:50,margginTop:50}}>
       <Header header="this is task checkList" />
-      <ActionButton />
+      <ActionButton  handleFilters={handleFilters}/>
       <br />
       <input type="text" value={newTaskText} onChange={(e) => handller(e)} />
-      <Button text="add Task" onclick={() => addTask()} />
+      <Button text="add Task" onClick={addTask} />
 
       <br />
-      <Tasks taskList={taskList} />
+      <Tasks 
+      tasks={listToShow}
+      removeTask={removeTask}
+      handleComplete={handleComplete} />
     </div>
   );
 }

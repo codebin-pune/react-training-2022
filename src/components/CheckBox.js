@@ -1,11 +1,9 @@
 import React from "react"
 
-const CheckBox=({action})=>{
-    return(
-        <>
-            <input type="checkbox" checked={action}/>
-        </>
-    )
-}
+const CheckBox=({status,onChange})=>{
+    return <input type="checkbox" checked={status} onChange={onChange}/>;
+        
+    
+};
 
 export default CheckBox

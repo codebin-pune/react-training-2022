@@ -1,11 +1,10 @@
 import React from "react";
-import Tasks from "./Tasks";
 
-const Button = ({ text, onclick,full }) => {
+
+const Button = ({ text, onClick }) => {
   return (
-    <>
-      <button onClick={onclick}>{text}</button>
-    </>
+      <button onClick={onClick} style={{maxHeight:30}}>{text}</button>
+    
   );
 };
 export default Button;
