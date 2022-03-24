@@ -1,14 +1,18 @@
-import React from 'react';
-import TaskItem from './TaskItem';
+import React from "react";
+import TaskItem from "./TaskItem";
 
-const Tasks = () => {
-  return(
+const Tasks = ({ tasks, removeTask, handleCompelete }) => {
+  return (
     <div>
-      <TaskItem />
-      <TaskItem />
-      <TaskItem />
+      {tasks.map((task) => (
+        <TaskItem
+          task={task}
+          handleCompelete={handleCompelete}
+          removeTask={removeTask}
+        />
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default Tasks
+export default Tasks;

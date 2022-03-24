@@ -1,9 +1,11 @@
-import React from 'react';
+import React from "react";
 
-const Button = ({text}) => {
+const Button = ({ text, handleClick }) => {
   return (
-    <button>{text}</button>
-  )
-}
+    <button onClick={handleClick} style={{ maxHeight: 30 }}>
+      {text}
+    </button>
+  );
+};
 
 export default Button;
