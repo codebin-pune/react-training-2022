@@ -69,8 +69,10 @@ function App() {
     setSearch(value)
   }
   useEffect(() => {
+    if(search.length<0){
     const newList = taskList.filter((item) => item.title.includes(search));
     setTaskList(newList);
+    }
   }, [search]);
 
 
@@ -128,13 +130,16 @@ function App() {
       <br />
       <br />
       <input Text="text" placeholder= "Search item" value={search} onChange={(e) => searchItem(e.target.value)}/>
-    { error ? <div>{error}</div> : <h5 />}
-    {/* { listToshow > 0 ?   */}
-    <Tasks 
-      tasks={listToshow} 
-      removeTask={removeTask}
-      handleComplete={handleComplete}/> 
-      {/* : <h3>Loading.....</h3> } */}
+    { error ? <div><br />{error}</div> : 
+    <p>
+    { listToshow != 0 ?  
+      <Tasks 
+        tasks={listToshow} 
+        removeTask={removeTask}
+        handleComplete={handleComplete}/> 
+        : <h3>Loading.....</h3> }
+    </p>
+    }
     </div>
   );
 }
