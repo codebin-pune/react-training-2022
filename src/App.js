@@ -140,20 +140,20 @@ function App() {
       }
 
     
-      <Tasks 
+      {/* <Tasks 
       tasks={listToShow}
       removeTask={removeTask}
-      handleComplete={handleComplete} />
+      handleComplete={handleComplete} /> */}
       
     
-      {/* {
-        listToShow>0?
+      {
+        listToShow!=0?
       <Tasks 
       tasks={listToShow}
       removeTask={removeTask}
       handleComplete={handleComplete} />
       :<h3>Loading...</h3>
-      } */}
+      }
     </div>
     
   );
