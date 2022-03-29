@@ -1,21 +1,48 @@
-import ActionButton from "./components/ActionButton";
-import Tasks from "./components/Tasks";
-import Header from "./components/Header";
-import { useState } from "react";
-import Button from "./components/Button";
+import ActionButton from "./component/ActionButton";
+import Tasks from "./component/Tasks";
+import Header from "./component/Header";
+import { useState ,useEffect } from "react";
+import Button from "./component/Button";
+import axios from "axios";
 
 
-const tasks=[
-  {
-    id:1,
-    text:"gopal",
-    completed:false
-  }];
+// const tasks=[
+//   {
+//     id:1,
+//     text:"gopal",
+//     completed:false
+//   }];
 
 function App() {
-  const [taskList, setTaskList] = useState(tasks);
+  const [taskList, setTaskList] = useState([]);
   const [newTaskText, setNewTaskText] = useState("");
   const [listState,setListState]=useState("all")
+  const [error,setError]=useState("");
+  const [search,setSearch]=useState("");
+  const [filteredResults, setFilteredResults]=useState([]);
+
+  
+
+
+  useEffect(() => {
+    let url = "https://jsonplaceholder.typicode.com/todos";
+    axios
+      .get(url)
+      .then((result) => {
+        setTaskList(result.data);
+        setFilteredResults(result.data);
+      })
+      .catch((error) => setError(error.toString()));
+  }, []);
+
+
+  useEffect(() => {
+     
+      const newList = taskList.filter((item) =>item.title.includes(search) );
+      setTaskList(newList);
+    
+  }, [search]);
+
 
   const handller = (e) => {
     const data = e.target.value;
@@ -74,6 +101,26 @@ function App() {
           default:
             break;
      }
+     
+     const serchItem=(values)=>{
+       if(values===""){
+         setTaskList(filteredResults)
+        }
+      setSearch(values)
+    
+  }
+    
+
+
+
+
+    //   if(search==""){
+    //     setSearch(values);
+    //   }
+    //   else{
+    //     setFilteredResults(taskList)
+    //   }
+    //  }
           
   return (
     <div className="App" style={{marginLeft:50,margginTop:50}}>
@@ -84,11 +131,31 @@ function App() {
       <Button text="add Task" onClick={addTask} />
 
       <br />
+      <br/>
+      <input type="text" placeholder="search item" value={search} onChange={(e) => serchItem(e.target.value.replace(/[^\w\s]/gi, ""))} />
+      <br/>
+
+      {
+        error?<div>{error}</div>:null
+      }
+
+    
+      {/* <Tasks 
+      tasks={listToShow}
+      removeTask={removeTask}
+      handleComplete={handleComplete} /> */}
+      
+    
+      {
+        listToShow>0?
       <Tasks 
       tasks={listToShow}
       removeTask={removeTask}
       handleComplete={handleComplete} />
+      :<h3>Loading...</h3>
+      }
     </div>
+    
   );
 }
 

@@ -9,7 +9,7 @@ import Button from "./Button";
     return(
         <div style={{display:"flex",flexDirection:"row"}}>
             <CheckBox status={task.completed}  onChange={() => handleComplete(task.id)}/>
-            <TaskDesc textDesc={task.text}/>
+            <TaskDesc textDesc={task.title}/>
             <div>
             
             <Button text="delete" onClick={() => removeTask(task.id)} />
