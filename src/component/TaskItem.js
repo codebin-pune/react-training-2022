@@ -6,7 +6,7 @@ const TaskItem = ({tasks,removeTask,handleComplete}) => {
   return (
     <div style={{display:"flex",flexDirection:'row'}}>
       <CheckBox onChange = {() => handleComplete(tasks.id)} status={tasks.completed} />
-      <TaskDisc taskText={tasks.text} />
+      <TaskDisc taskText={tasks.title} />
       <button onClick={()=>removeTask(tasks.id)} style={{height:20,marginTop:15}}>X</button>
     </div>
   )
