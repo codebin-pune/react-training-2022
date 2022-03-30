@@ -1,7 +1,5 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import ActionButtons from "./component/ActionButtons";
-import Button from "./component/Button";
 import Header from "./component/Header";
 import Tasks from "./component/Tasks";
 
@@ -38,10 +36,10 @@ function App() {
   const [searchtask , setSearchTask] = useState([]);
 
   const addTask = () => {
-    console.log('i am called')
+    //console.log('i am called')
     const newTask = {
       id: new Date().toDateString(),
-      text: newTaskText,
+      title: newTaskText,
       completed: false
     }
     setTaskList([...taskList, newTask]);
@@ -49,10 +47,11 @@ function App() {
   }
 
   useEffect(() => {
-    let url = "https://jsonplaceholder.typicode.com/todos";
+    let url = "https://fakestoreapi.com/products";
     axios
       .get(url)
       .then((result) => {
+        console.log(result.data);
         setTaskList(result.data);
         setSearchTask(result.data);
 
@@ -69,7 +68,7 @@ function App() {
     setSearch(value)
   }
   useEffect(() => {
-    if(search.length<0){
+    if(search.length>0){
     const newList = taskList.filter((item) => item.title.includes(search));
     setTaskList(newList);
     }
@@ -123,20 +122,13 @@ function App() {
     <div className="App" style={{marginLeft: 50,margintop:50}}>
      <h1>Hello ...</h1>
      <Header headerText="it my checklist"/>
-     <ActionButtons handleFilter={handleFilter}/>
-     <br />
-     <input value={newTaskText} onChange={(e) => handleChange(e)} type="text" placeholder="add a new task" />
-     <Button Text="Add task" onClick={()=>addTask()} />
-      <br />
       <br />
       <input Text="text" placeholder= "Search item" value={search} onChange={(e) => searchItem(e.target.value)}/>
     { error ? <div><br />{error}</div> : 
     <p>
     { listToshow != 0 ?  
       <Tasks 
-        tasks={listToshow} 
-        removeTask={removeTask}
-        handleComplete={handleComplete}/> 
+        tasks={listToshow} />
         : <h3>Loading.....</h3> }
     </p>
     }
