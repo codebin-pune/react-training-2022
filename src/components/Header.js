@@ -1,8 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Header = ({headerText}) => {
+const Header = () => {
   return (
-    <h1>{headerText}</h1>
+    <nav>
+      <Link to="/">Products</Link>
+      <br />
+      <Link to="/about">About</Link>
+      <br />
+      <Link to="/tasks">Tasks</Link>
+      <br />
+    </nav>
   )
 }
 

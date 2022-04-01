@@ -10,7 +10,7 @@ const TaskItem = ({ task, removeTask, handleCompelete }) => {
         status={task.completed}
         onChange={() => handleCompelete(task.id)}
       />
-      <TaskDesc taskText={task.text} />
+      <TaskDesc taskText={task.title} />
       <div style={{ alignItems: "center", marginTop: 14, marginLeft: 10 }}>
         <Button text="Remove" handleClick={() => removeTask(task.id)} />
       </div>
