@@ -101,10 +101,10 @@ const TaskPage = () =>{
             <ActionButtons handleFilter={handleFilter}/>
             <br />
             <input value={newTaskText} onChange={(e) => handleChange(e)} type="text" placeholder="add a new task" />
-            <Button Text="Add task" onClick={()=>addTask()} />
+            <Button text="Add task" onClick={()=>addTask()} />
             <br />
             <br />
-            <input Text="text" placeholder= "Search item" value={search} onChange={(e) => searchItem(e.target.value)}/>
+            <input text="text" placeholder= "Search item" value={search} onChange={(e) => searchItem(e.target.value)}/>
             { error ? <div><br />{error}</div> : 
             <p>
             { listToshow !== 0 ?  

@@ -26,7 +26,7 @@ const Singlepage = () =>{
                 <h3 >{products.title}</h3>
                 <h4>Price:{products.price}</h4>
                 <p>{products.description}</p>
-                <Button onClick={()=>console.log("Added to card",products.id)}  Text="Add to card"/>
+                <Button onClick={()=>console.log("Added to card",products.id)}  text="Add to card"/>
             </div>
         </div>
     </div>
