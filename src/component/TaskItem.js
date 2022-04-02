@@ -1,13 +1,13 @@
 import React from 'react';
-import CheckBox from './CheckBox';
 import TaskDisc from './TaskDisc';
+import Image from './Image';
 
-const TaskItem = ({tasks,removeTask,handleComplete}) => {
+const TaskItem = ({tasks}) => {
   return (
     <div style={{display:"flex",flexDirection:'row'}}>
-      <CheckBox onChange = {() => handleComplete(tasks.id)} status={tasks.completed} />
-      <TaskDisc taskText={tasks.title} />
-      <button onClick={()=>removeTask(tasks.id)} style={{height:20,marginTop:15}}>X</button>
+      <Image img={tasks.image}/>
+
+      <TaskDisc taskText={tasks.title}/>
     </div>
   )
 }
