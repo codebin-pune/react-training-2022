@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import About from './pages/AboutPage';
+import Cart from './pages/CartPage';
 import Products from './pages/ProductPage';
 import SingleProduct from './pages/SingleProductPage';
 import TasksPage from './pages/TaskPage';
@@ -12,9 +13,10 @@ const App = () => {
     <Header />
     <Routes>
       <Route path="/" element={< Products/>} />
-      <Route path="single-product/:id" element={< SingleProduct/>} />
+      <Route path="single-product/:id" element={<SingleProduct/>} />
       <Route path="about" element={<About />} />
       <Route path="tasks" element={<TasksPage />} />
+      <Route path="cart" element={<Cart />} />
     </Routes>
     </div>
   )

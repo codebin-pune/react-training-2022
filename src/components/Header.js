@@ -10,6 +10,8 @@ const Header = () => {
       <br />
       <Link to="/tasks">Tasks</Link>
       <br />
+      <Link to="/cart">Cart</Link>
+      <br />
     </nav>
   )
 }
