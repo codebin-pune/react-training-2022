@@ -4,6 +4,7 @@ import TaskPage from "./Pages/TaskPage";
 import SingleProductPage from "./Pages/SingleProductPage"
 import ProductPage from "./Pages/ProductPage"
 import Header from "./component/Header";
+import CartPage from "./Pages/CartPage"
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<AboutPage />} />
           <Route path="product" element={<TaskPage />} />
           <Route path="task" element={<ProductPage />} />
+          <Route path="cart" element={<CartPage />} />
           <Route path="single-product/:id" element={<SingleProductPage/>} />
         </Routes>
     </div>
