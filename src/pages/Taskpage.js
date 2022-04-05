@@ -54,6 +54,7 @@ const TaskPage = () =>{
   
     const removeTask=(id) => {
       const index = taskList.findIndex((it)=>it.id === id);
+      console.log(index);
       const newList=[...taskList.slice(0,index), ...taskList.slice(index+1)];
       setTaskList(newList);
     }
@@ -107,7 +108,7 @@ const TaskPage = () =>{
             <input text="text" placeholder= "Search item" value={search} onChange={(e) => searchItem(e.target.value)}/>
             { error ? <div><br />{error}</div> : 
             <p>
-            { listToshow !== 0 ?  
+            { listToshow.length > 0 ?  
             <Tasks 
                 tasks={listToshow} 
                 removeTask={removeTask}

@@ -1,8 +1,19 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Button from "../component/Button";
+import { CART_ITEMS } from "../constant";
+//import { hAddToCart } from "./Singlepage";
 
 const RenderProduct = ({item}) =>{
+
+    const hAddToCart = (id) =>{
+        const currentCartItem = localStorage.getItem(CART_ITEMS);
+        const arrList = currentCartItem !== null ? JSON.parse(currentCartItem) : [] ;
+        const NewItem = [...arrList,id];
+        localStorage.setItem(CART_ITEMS ,JSON.stringify(NewItem));
+    };
+
     return(
     <div style={{display:'flex' ,flexDirection:"row" }}>
         <div>
@@ -12,6 +23,7 @@ const RenderProduct = ({item}) =>{
         <h3 >{item.title}</h3>
         <h4>Price:{item.price}</h4>
         <Link to={`/singlepage/${item.id}`}>View detail</Link>
+        <Button onClick={()=> {hAddToCart(item.id)}}  text="Add to card"/>
         </div>
     </div>);
 }

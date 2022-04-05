@@ -4,6 +4,7 @@ import About from "./pages/About";
 import Productpage from "./pages/Productpage";
 import TaskPage from "./pages/Taskpage";
 import Singlepage from "./pages/Singlepage";
+import CartItem from "./pages/CartItem";
 //import './App.css';
 // const tasks = [
 //   {
@@ -38,6 +39,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/taskpage" element={<TaskPage />} />
         <Route path="/" element={<Productpage />} />
+        <Route path="/cartprjao" element={<CartItem />} />
       </Routes>
       </div>
   );

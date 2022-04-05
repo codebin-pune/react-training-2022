@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Button from "../component/Button";
+import { CART_ITEMS } from "../constant";
 
 const Singlepage = () =>{
     
@@ -15,6 +16,13 @@ const Singlepage = () =>{
     },[id]);
     //console.log({setProducts});
 
+    const hAddToCart = (id) =>{
+        const currentCartItem = localStorage.getItem(CART_ITEMS);
+        const arrList = currentCartItem !== null ? JSON.parse(currentCartItem) : [] ;
+        const NewItem = [...arrList,id];
+        localStorage.setItem(CART_ITEMS ,JSON.stringify(NewItem));
+    };
+
     return(
     <div>
         <h1>Hello this is singlepage</h1>
@@ -26,7 +34,7 @@ const Singlepage = () =>{
                 <h3 >{products.title}</h3>
                 <h4>Price:{products.price}</h4>
                 <p>{products.description}</p>
-                <Button onClick={()=>console.log("Added to card",products.id)}  text="Add to card"/>
+                <Button onClick={()=> hAddToCart(products.id)}  text="Add to card"/>
             </div>
         </div>
     </div>
