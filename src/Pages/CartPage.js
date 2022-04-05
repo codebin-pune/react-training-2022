@@ -12,16 +12,24 @@ const Cart = () => {
   }, []);
 
   const handleRemove = (it) => {
+    const index=cartItem.findIndex((item)=>item===it)
+    const newData=[...cartItem.slice(0,index),...cartItem.slice(index+1)]
+    setCartItems(newData)
+    localStorage.setItem("cart_items",JSON.stringify(newData))
+
     //  console.log(it)
-    const index = cartItem.findIndex((item) => item === it);
-    const newList = [...cartItem.slice(0, index), ...cartItem.slice(index + 1)];
-    setCartItems(newList);
-    console.log(cartItem)
-    let devicesArray  = JSON.parse(localStorage.getItem("cart_items"))
-    console.log()
-        devicesArray.splice(index, 1)
-        localStorage.setItem("cart_items", JSON.stringify(devicesArray));
+    // const index = cartItem.findIndex((item) => item === it);
+    // const newList = [...cartItem.slice(0, index), ...cartItem.slice(index + 1)];
+    // setCartItems(newList);
+    
+
+    // let devicesArray = JSON.parse(localStorage.getItem("cart_items"));
+    // console.log();
+    // devicesArray.splice(index, 1);
+    // localStorage.setItem("cart_items", JSON.stringify(devicesArray));
+
    
+
   };
 
   return (
