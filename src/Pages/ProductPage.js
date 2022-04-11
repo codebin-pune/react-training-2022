@@ -7,7 +7,15 @@ import { CART_ITEMS } from "../constant";
 
 
 const RenderProduct=({product})=>{
+    const [state,setState]=useState(false);
+    
     const handleAddToCart = (id) => {
+        setState(true)
+        setTimeout(()=>{
+          
+            setState(false)
+        },5000)
+
         const currentCartItems = localStorage.getItem(CART_ITEMS);
         const arrayList = currentCartItems !== null ? JSON.parse(currentCartItems) : [];
         const newItems = [...arrayList, id];
@@ -27,10 +35,8 @@ const RenderProduct=({product})=>{
                  <Link to={`/single-product/${product.id}`}>View Details</Link>
                  <br />
         <br />
-        <Button
-          handleClick={() => handleAddToCart(product.id)}
-          text={"Add to cart"}
-        />
+        <Button handleClick={() => !state?handleAddToCart(product.id):null} text={ state?"Add to cart":"Add"} status={state}/>
+      
              </div>
         </div>
     )

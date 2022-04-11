@@ -5,6 +5,7 @@ import SingleProductPage from "./Pages/SingleProductPage"
 import ProductPage from "./Pages/ProductPage"
 import Header from "./component/Header";
 import CartPage from "./Pages/CartPage"
+import ImageUpload from "./Pages/ImageUpload"
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="product" element={<TaskPage />} />
           <Route path="task" element={<ProductPage />} />
           <Route path="cart" element={<CartPage />} />
+          <Route path="image" element={<ImageUpload />} />
           <Route path="single-product/:id" element={<SingleProductPage/>} />
         </Routes>
     </div>

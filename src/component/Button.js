@@ -1,7 +1,7 @@
 import React from 'react'
 
-export const Button = ({text,handleClick}) => {
+export const Button = ({text,handleClick,status}) => {
   return (
-    <button onClick={handleClick} >{text}</button>
+    <button onClick={handleClick}  disabled={status} >{text}</button>
   )
 }

@@ -11,6 +11,8 @@ const Header = () => {
       <Link to="/task">task</Link>
       <br />
       <Link to="/cart">Cart</Link>
+      <br />
+      <Link to="/image">Image Upload</Link>
     </div>
   );
 };
