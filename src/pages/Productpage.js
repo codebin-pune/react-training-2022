@@ -6,13 +6,22 @@ import { CART_ITEMS } from "../constant";
 //import { hAddToCart } from "./Singlepage";
 
 const RenderProduct = ({item}) =>{
+    const [state,setState] = useState(false);
+
 
     const hAddToCart = (id) =>{
+        
+        setState(true);
+        setTimeout(()=>{
+            setState(false);
+        },5000)
+        
         const currentCartItem = localStorage.getItem(CART_ITEMS);
         const arrList = currentCartItem !== null ? JSON.parse(currentCartItem) : [] ;
         const NewItem = [...arrList,id];
         localStorage.setItem(CART_ITEMS ,JSON.stringify(NewItem));
     };
+    let check="add";
 
     return(
     <div style={{display:'flex' ,flexDirection:"row" }}>
@@ -23,7 +32,9 @@ const RenderProduct = ({item}) =>{
         <h3 >{item.title}</h3>
         <h4>Price:{item.price}</h4>
         <Link to={`/singlepage/${item.id}`}>View detail</Link>
-        <Button onClick={()=> {hAddToCart(item.id)}}  text="Add to card"/>
+        {/* //state !== false ?  */}
+        <Button onClick={()=> {hAddToCart(item.id)}} text={"Add to card"} />
+        {/* <Button onClick={()=> {hAddToCart(item.id)}}  text="Add"/>} */}
         </div>
     </div>);
 }
@@ -39,7 +50,7 @@ const Productpage = () =>{
     return (
         <div>
             <h1>This is Productpage page</h1>
-            {product.map(item => <RenderProduct key={item.id} item={item} />)}
+            { product.length > 0 ? product.map(item => <RenderProduct key={item.id} item={item} />) : <h3>Loading...</h3>}
         </div>
     )
 }

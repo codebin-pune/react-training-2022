@@ -5,6 +5,8 @@ import Productpage from "./pages/Productpage";
 import TaskPage from "./pages/Taskpage";
 import Singlepage from "./pages/Singlepage";
 import CartItem from "./pages/CartItem";
+import UpImage from "./pages/UpImage";
+//import ReactCrop from "react-image-crop/dist/ReactCrop";
 //import './App.css';
 // const tasks = [
 //   {
@@ -40,6 +42,8 @@ function App() {
         <Route path="/taskpage" element={<TaskPage />} />
         <Route path="/" element={<Productpage />} />
         <Route path="/cartprjao" element={<CartItem />} />
+        <Route path="/image" element={<UpImage />} />
+
       </Routes>
       </div>
   );

@@ -21,7 +21,7 @@ const CartItem = () =>{
         //console.log(NewRMData); 
         //NewRMData.splice(index,1); 
         localStorage.setItem(CART_ITEMS ,JSON.stringify(NewItenList)); //NewItenList = NewRMData
-         //console.log(itemCart); 
+        //console.log(itemCart); 
         //setNewItemCartList(NewItenList); 
         }
      

@@ -5,6 +5,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+//import ReactCrop from "react-image-crop/dist/ReactCrop";
 
 ReactDOM.render(
   <React.StrictMode>
